@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- informs Django's template engine of the use of static files -->
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rango</title>
+</head>
+<body>
+    <div>
+        <strong>{{ authormessage }}</strong> <br />
+    </div>
+
+    <div>
+        <a href="/rango/">Index</a> <br />
+
+       <!-- Static Image -->
+        <img src="{% static "images/compcat.jpg" %}"
+            alt="A picture of a cat and computer" />
+    </div>
+
+<div>
+       <!-- Media Image -->
+        <img src="{{MEDIA_URL}}user/cat.jpg"
+            alt="A picture of a cat" />
+    </div>
+
+
+</body>
+</html>
