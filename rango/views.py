@@ -1,8 +1,11 @@
-from django.http import HttpResponse 
+from django.http import HttpResponse
+from django.shortcuts import render
 
-# An inital view (index view) with a link to the about page
+# Construct a dictionary to pass to the template engine as its context
+# NB!: boldmessage = {{boldmessage}} from the template
 def index(request):
-	return HttpResponse("Rango says hey there partner! <br/> <a href='/rango/about/'>About</a>")
+	context_dict = {'boldmessage' : "Crunchy, creamy, cookie, candy, cupcake!"}
+	return render(request, 'rango/index.html', context=context_dict)
 
 # An about view with a link to the index page
 def about(request):
