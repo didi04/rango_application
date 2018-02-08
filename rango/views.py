@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from rango.models import Category
+from rango.models import Page
 
 # Construct a dictionary to pass to the template engine as its context
 # NB!: boldmessage = {{boldmessage}} from the template
 def index(request):
-	#context_dict = {'boldmessage' : "Crunchy, creamy, cookie, candy, cupcake!"}
-	#return render(request, 'rango/index.html', context=context_dict)
+    #context_dict = {'boldmessage' : "Crunchy, creamy, cookie, candy, cupcake!"}
+    #return render(request, 'rango/index.html', context=context_dict)
 
 # Query the database for a list of ALL categories currently stored.
 # Order the categories by no. likes in descending order.
@@ -24,3 +25,17 @@ def index(request):
 def about(request):
     context_dict = {'authormessage': "This tutorial has been put together by Dilyana Savcheva"}
     return render(request, 'rango/about.html', context=context_dict)
+
+def show_category(request, category_name_slug):
+    context_dict ={}
+
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+        pages = Page.objects.filter(category=category)
+
+        context_dict['pages'] = pages
+        context_dict['category'] = category
+    except Category.DoesNotExist:
+        context_dict['category'] = None
+        context_dict['pages'] = None
+    return render(request, 'rango/category.html', context_dict)
