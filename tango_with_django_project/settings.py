@@ -75,6 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.media'
 
             ],
+            'libraries': {
+                'rango_template_tags': 'templates.rango.templatetags.rango_template_tags'
+            }
         },
     },
 ]

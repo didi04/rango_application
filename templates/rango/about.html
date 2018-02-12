@@ -1,31 +1,32 @@
-<!DOCTYPE html>
-{% load staticfiles %} <!-- informs Django's template engine of the use of static files -->
+{% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
 
+		About
 
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Rango</title>
-</head>
-<body>
-    <div>
-        <strong>{{ authormessage }}</strong> <br />
-    </div>
+	{% endblock %}
 
-    <div>
-        <a href="/rango/">Index</a> <br />
+	
 
-       <!-- Static Image -->
-        <img src="{% static "images/compcat.jpg" %}"
-            alt="A picture of a cat and computer" />
-    </div>
+	{% block body_block %}
 
-<div>
-       <!-- Media Image -->
-        <img src="{{MEDIA_URL}}cat.jpg"
-            alt="A picture of a cat" />
-    </div>
+        <div>
 
+	        <h1>About Page</h1>			
 
-</body>
-</html>
+	        This tutorial has been put together by:Dilyana Savcheva
+            
+
+		</div>	
+
+		<img src="{% static "images/compcat.jpg" %}" alt="Picture of a Cat on Computer" />
+
+		<p>
+
+		<img src="{{MEDIA_URL}}cat.jpg" alt="Picture of a cat"/>
+
+		</p>
+        <hr />
+        {%endblock%}
+        
+        
